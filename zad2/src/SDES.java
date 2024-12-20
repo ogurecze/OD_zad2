@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class SDES {
 
@@ -23,16 +23,23 @@ public class SDES {
     };
 
     public static void main(String[] args) {
-        String plaintext = "00001111";
-        String key = "1111100000";
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Wpisz tekst: ");
+        String plaintext = scanner.nextLine();
+
+        System.out.print("Wpisz klucz: ");
+        String key = scanner.nextLine();
 
         String[] keys = generateKeys(key);
         String ciphertext = encrypt(plaintext, keys);
         String decryptedText = decrypt(ciphertext, keys);
 
-        System.out.println("Tekst jawny:      " + plaintext);
-        System.out.println("Tekst zaszyfrowany:     " + ciphertext);
+        System.out.println("Tekst:              " + plaintext);
+        System.out.println("Tekst zaszyfrowany: " + ciphertext);
         System.out.println("Tekst odszyfrowany: " + decryptedText);
+
+        scanner.close();
     }
 
     public static String[] generateKeys(String key) {
